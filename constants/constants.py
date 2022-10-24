@@ -1,0 +1,19 @@
+# API
+BASE_API_URL = "https://war-service-live.foxholeservices.com/api/worldconquest"
+STATIC_MODIFIER = "/maps/DeadLandsHex/static"
+DYNAMIC_MODIFIER = "/maps/DeadLandsHex/dynamic/public"
+WARREPORT_MODIFIER = "/warReport/DeadLandsHex"
+# Team colors
+WARDEN_TEAM_COLOR = "629AED"
+COLONIAL_TEAM_COLOR = "54C53D"
+NEUTRAL_TEAM_COLOR = "E6E6E6"
+NUKED_COLOR = "A20000"
+# Casuality rate
+CASUALITY_RATE_100 = "0022ff"
+CASUALITY_RATE_200 = "00fff4"
+CASUALITY_RATE_300 = "3eff00"
+CASUALITY_RATE_400 = "fdff00"
+CASUALITY_RATE_500 = "ffbe00"
+CASUALITY_RATE_600 = "ff6e00"
+CASUALITY_RATE_700 = "ff0040"
+CASUALITY_RATE_800 = "ff0EF0"
