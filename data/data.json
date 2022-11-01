@@ -1,0 +1,21 @@
+{
+    "timestamp": 1667327367011,
+    "casualties": {
+        "colonial": 159531,
+        "warden": 158546
+    },
+    "towns": {
+        "Huskhollow": "WARDENS",
+        "Iuxta Homestead": "WARDENS",
+        "Macha's Keening": "COLONIALS",
+        "Mara": "WARDENS",
+        "Pleading Wharf": "COLONIALS",
+        "Scarp of Ambrose": "WARDENS",
+        "Scythe": "WARDENS",
+        "Terra": "WARDENS",
+        "The Bone Haft": "WARDENS",
+        "The Jade Cove": "WARDENS",
+        "The Spearhead": "WARDENS",
+        "Victa": "WARDENS"
+    }
+}
