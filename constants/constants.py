@@ -1,8 +1,8 @@
 # API
 BASE_API_URL = "https://war-service-live.foxholeservices.com/api/worldconquest"
-STATIC_MODIFIER = "/maps/DeadLandsHex/static"
-DYNAMIC_MODIFIER = "/maps/DeadLandsHex/dynamic/public"
-WARREPORT_MODIFIER = "/warReport/DeadLandsHex"
+STATIC_MODIFIER = "/maps/FarranacCoastHex/static"
+DYNAMIC_MODIFIER = "/maps/FarranacCoastHex/dynamic/public"
+WARREPORT_MODIFIER = "/warReport/FarranacCoastHex"
 # Team colors
 WARDEN_TEAM_COLOR = "629AED"
 COLONIAL_TEAM_COLOR = "54C53D"

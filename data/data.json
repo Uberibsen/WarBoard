@@ -1,20 +1,21 @@
 {
-    "timestamp": 1666631877543,
+    "timestamp": 1667327367011,
     "casualties": {
-        "colonial": 280909,
-        "warden": 308675
+        "colonial": 159531,
+        "warden": 158546
     },
     "towns": {
-        "Abandoned Ward": "COLONIALS",
-        "Brine Glen": "COLONIALS",
-        "Callahan's Boot": "COLONIALS",
-        "Callahan's Gate": "WARDENS",
-        "Iron's End": "WARDENS",
-        "Liberation Point": "COLONIALS",
-        "Sun's Hollow": "COLONIALS",
-        "The Pits": "COLONIALS",
-        "The Salt Farms": "COLONIALS",
-        "The Salt March": "WARDENS",
-        "The Spine": "WARDENS"
+        "Huskhollow": "WARDENS",
+        "Iuxta Homestead": "WARDENS",
+        "Macha's Keening": "COLONIALS",
+        "Mara": "WARDENS",
+        "Pleading Wharf": "COLONIALS",
+        "Scarp of Ambrose": "WARDENS",
+        "Scythe": "WARDENS",
+        "Terra": "WARDENS",
+        "The Bone Haft": "WARDENS",
+        "The Jade Cove": "WARDENS",
+        "The Spearhead": "WARDENS",
+        "Victa": "WARDENS"
     }
 }

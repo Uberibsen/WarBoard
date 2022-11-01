@@ -22,3 +22,8 @@ class API:
             return response
         else:
             return False
+
+    def write_json(json_object):
+        """Write json data to file"""
+        with open("data/data.json", "w") as outfile:
+            outfile.write(json_object)
