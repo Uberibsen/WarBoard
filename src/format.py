@@ -6,14 +6,10 @@ class FilterResponse:
         """Calculates the distance between towns in static and dynamic API response"""
         return math.sqrt(abs(x1 - y1) ** 2 + abs(x2 - y2) ** 2)
 
-    def captured_towns(static, dynamic, warreport):
+    def captured_towns(static, dynamic):
         """Returns filtered API response and converted coordinates for town identification"""
-        filtered_towns = {"timestamp": dynamic['lastUpdated'], "casualties": {}, "towns": {}}
+        captured_towns = {}
         icons = [45, 46, 47, 56, 57, 58] # Town halls and relics
-
-        # Add total faction casualties in hex 
-        filtered_towns['casualties']['colonial'] = warreport['colonialCasualties']
-        filtered_towns['casualties']['warden'] = warreport['wardenCasualties']
 
         # Takes x and y coordinates from both API responses, calculates nearest and assigns faction
         for static_item in static['mapTextItems']:
@@ -30,5 +26,25 @@ class FilterResponse:
                         faction_captured.append(dynamic_item['teamId'])
                         deltas.append(FilterResponse.town_distance(x1, y1, x2, y2))
                 lowest_index = deltas.index(min(deltas))
-                filtered_towns["towns"][town] = faction_captured[lowest_index]
-        return filtered_towns
+                captured_towns[town] = faction_captured[lowest_index]
+        return captured_towns
+
+    def casuality_rate(warreport):
+        """Returns the casuality rate pr. hour for each faction"""
+        casuality_rate = {}
+        try:
+            casuality_rate['colonial'] = warreport['colonialCasualties'] - cas_rate_storage[0]
+            casuality_rate['warden'] = warreport['wardenCasualties'] - cas_rate_storage[1]
+        except UnboundLocalError:
+            casuality_rate['colonial'] = 0
+            casuality_rate['warden'] = 0
+        cas_rate_storage = [warreport['colonialCasualties'], warreport['wardenCasualties']]
+
+        return casuality_rate
+
+    def complete_response(static, dynamic, warreport):
+        """Returns the complete filtered API response for LED usage"""
+        complete_response = {"timestamp": dynamic['lastUpdated'], "casuality_rate": {}, "towns": {}}
+        complete_response['casuality_rate'] = FilterResponse.casuality_rate(warreport)
+        complete_response['towns'] = FilterResponse.captured_towns(static, dynamic)
+        return complete_response
