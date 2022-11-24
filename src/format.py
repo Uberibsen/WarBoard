@@ -29,22 +29,26 @@ class FilterResponse:
                 captured_towns[town] = faction_captured[lowest_index]
         return captured_towns
 
-    def casuality_rate(warreport):
+    def calculate_casuality_rate(count, cas, cas_list):
+        """Appends each sum of casualties for pr. hour calculation"""
+        if len(cas_list) > 6:
+            deaths_per_hour = cas_list[count] = cas
+            deaths_per_hour = (cas - cas_list[count + 1])       
+        else:
+            cas_list.append(cas)
+            deaths_per_hour = cas_list[count] - cas_list[0]
+        return deaths_per_hour
+
+    def casuality_rate(warreport, count, casualties_w, casualties_c):
         """Returns the casuality rate pr. hour for each faction"""
         casuality_rate = {}
-        try:
-            casuality_rate['colonial'] = warreport['colonialCasualties'] - cas_rate_storage[0]
-            casuality_rate['warden'] = warreport['wardenCasualties'] - cas_rate_storage[1]
-        except UnboundLocalError:
-            casuality_rate['colonial'] = 0
-            casuality_rate['warden'] = 0
-        cas_rate_storage = [warreport['colonialCasualties'], warreport['wardenCasualties']]
-
+        casuality_rate['colonials'] = FilterResponse.calculate_casuality_rate(count, warreport['colonialCasualties'], casualties_c)
+        casuality_rate['wardens'] = FilterResponse.calculate_casuality_rate(count, warreport['wardenCasualties'], casualties_w)
         return casuality_rate
 
-    def complete_response(static, dynamic, warreport):
+    def complete_response(static, dynamic, warreport, count, casualties_w, casualties_c):
         """Returns the complete filtered API response for LED usage"""
         complete_response = {"timestamp": dynamic['lastUpdated'], "casuality_rate": {}, "towns": {}}
-        complete_response['casuality_rate'] = FilterResponse.casuality_rate(warreport)
+        complete_response['casuality_rate'] = FilterResponse.casuality_rate(warreport, count, casualties_w, casualties_c)
         complete_response['towns'] = FilterResponse.captured_towns(static, dynamic)
         return complete_response

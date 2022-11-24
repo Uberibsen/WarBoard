@@ -1,17 +1,51 @@
 from src.format import FilterResponse
 from src.request import API
+#from src.led import WS2812
 import constants.constants as constant
-import json
+import json, time
 
-api_response_warreport = API.get_hex_info(constant.BASE_API_URL, constant.WARREPORT_MODIFIER)
-api_response_static = API.get_hex_info(constant.BASE_API_URL, constant.STATIC_MODIFIER)
-api_response_dynamic = API.get_hex_info(constant.BASE_API_URL, constant.DYNAMIC_MODIFIER)
+casuality_rate_wardens = []
+casuality_rate_colonials = []
+count = 0
 
-# Filter API response
-json_object = json.dumps(FilterResponse.captured_towns(
-    api_response_static,
-    api_response_dynamic,
-    api_response_warreport),
-    indent = 4)
+while True:
+    try: 
+        data_option = int(input("Enter 1 for live data. Enter 2 for example data: "))
+        if data_option in range(1, 2):
+            break
+        else:
+            raise ValueError
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
 
-API.write_json(json_object)
+if data_option == 1:
+    while True:
+        api_response_warreport = API.get_hex_info(constant.BASE_API_URL, constant.WARREPORT_MODIFIER)
+        api_response_static = API.get_hex_info(constant.BASE_API_URL, constant.STATIC_MODIFIER)
+        api_response_dynamic = API.get_hex_info(constant.BASE_API_URL, constant.DYNAMIC_MODIFIER)
+
+        # Filter API response
+        json_object = json.dumps(FilterResponse.complete_response(
+            api_response_static,
+            api_response_dynamic,
+            api_response_warreport,
+            count,
+            casuality_rate_wardens,
+            casuality_rate_colonials),
+            indent = 4)
+
+        count = count + 1
+        if count > 5:
+            count = 0
+
+        API.write_json(json_object)
+        with open("data/data.json", "r") as filtered_data:
+            #WS2812.write_led_colors(json.load(filtered_data))
+            print(casuality_rate_colonials)
+        time.sleep(600) # 600 seconds by default (10 minutes)
+
+if data_option == 2:
+    with open("example/example.json", "r") as example_data:
+        #WS2812.write_led_colors(json.load(example_data))
+        pass
