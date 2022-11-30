@@ -4,8 +4,8 @@ from src.led import WS2812
 import constants.constants as constant
 import json, time
 
-casuality_rate_wardens = []
-casuality_rate_colonials = []
+casualty_rate_wardens = []
+casualty_rate_colonials = []
 count = 0
 
 while True:
@@ -33,8 +33,8 @@ if data_option == 1:
             api_response_dynamic,
             api_response_warreport,
             count,
-            casuality_rate_wardens,
-            casuality_rate_colonials),
+            casualty_rate_wardens,
+            casualty_rate_colonials),
             indent = 4)
 
         count = count + 1
