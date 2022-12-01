@@ -2,7 +2,7 @@ import urllib.request, json
 from urllib.error import HTTPError, URLError
 
 class API:
-    """Class for API calls to the WarAPI"""
+    """Class for API calls to the WarAPI"""        
     def call(base_api_url, modifier):
         """Calls the WarAPI, returns response"""
         url_request = str(f"{base_api_url}{modifier}")
@@ -14,6 +14,15 @@ class API:
                 return hex_response
         except (HTTPError, URLError) as err:
             return False
+
+    def get_etag(base_api_url, modifier):
+        """Get Etag from API call"""
+        url_request = str(f"{base_api_url}{modifier}")
+        response = urllib.request.urlopen(url_request)
+        headers = response.info()
+        etag = headers.get("ETag")
+        formatted_etag = int(etag.replace('"', ''))
+        return formatted_etag
 
     def get_hex_info(api, modifier):
         """Get specific hex info from the API call"""
