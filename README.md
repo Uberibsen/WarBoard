@@ -1,6 +1,11 @@
-![Foxhole game banner](media\images\warboard_logo.jpg)
+<p align="center">
+  <img src="https://github.com/Uberibsen/WarBoard/blob/main/media/images/warboard_logo.jpg" width=75% height=75%/>
+</p>
 
-![Warboard image](media\images\warboard_front_02.jpg)
+<p align="center">
+  <img src="https://github.com/Uberibsen/WarBoard/blob/main/media/images/warboard_front_02.jpg" width=50% height=50%/>
+</p>
+
 # WarBoard. A Foxhole-themed project 
 This project is a physical board displaying the current status of capture towns of a single hex from the game [Foxhole](https://www.foxholegame.com/). Inspired by [foxholestats.com](https://foxholestats.com/) and powered by Foxhole's [WarAPI](https://github.com/clapfoot/warapi) and a Raspberry Pi running Python.
 
@@ -34,7 +39,9 @@ The following section will go over some of the technical aspects of the project.
 For the actual computer running the code, I opted for the Raspberry Pi platform running the Raspberry Pi OS. It natively supports Python which I have existing experience, making the development easier. Upon execution of the program, the Pi issues an API fetch from the [WarAPI](https://github.com/clapfoot/warapi), which supplies data throughout the current war's duration. The API fetch is divided into three separate calls. First, a static dataset, which does not change during the war, a dynamic dataset which keeps track of towns captured / industry, etc, and finally a report over the total casualties in the hex in question. These three datasets serve their own purpose but we can combine them for a total overview of the war. [The Foxhole Wiki](https://foxhole.fandom.com/wiki/War_API) has more detailed explanations regarding the data, so I won't go into further details.
 
 Below you can see the flowchart of the program running:
-![](media\images\flowchart.png)
+<p align="center">
+  <img src="media\images\flowchart.png" width=75% height=75%/>
+</p>
 
 Within the static and dynamic datasets, we can find sets of coordinates that they both use to pinpoint where on the hex townhalls / relics are located. You can read more regarding how these coordinates are used [here.](https://foxhole.fandom.com/wiki/War_API#Using_X_and_Y) In the next section, I will further explain what each dataset contains and how I will use it.
 
