@@ -1,21 +1,21 @@
 {
     "timestamp": 1667398059424,
     "casuality_rate": {
-        "colonials": 574,
-        "wardens": 603
+        "colonials": 774,
+        "wardens": 803
     },
     "towns": {
         "Huskhollow": "WARDENS",
-        "Iuxta Homestead": "COLONIALS",
+        "Iuxta Homestead": "WARDENS",
         "Macha's Keening": "COLONIALS",
         "Mara": "COLONIALS",
         "Pleading Wharf": "COLONIALS",
         "Scarp of Ambrose": "WARDENS",
         "Scythe": "NONE",
-        "Terra": "NONE",
-        "The Bone Haft": "COLONIALS",
+        "Terra": "WARDENS",
+        "The Bone Haft": "WARDENS",
         "The Jade Cove": "NUKED",
-        "The Spearhead": "COLONIALS",
+        "The Spearhead": "WARDENS",
         "Victa": "COLONIALS"
     }
 }
